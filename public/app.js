@@ -1,3 +1,10 @@
+var CATS_ARRAY = [
+  { name: 'Lebowski', favFood: 'GoCat', image:  'https://78.media.tumblr.com/2675ae097a77bf9f0136ac09cbcd7712/tumblr_p67ym7RQYX1whb48xo1_500.jpg' },
+  { name: 'Boba', favFood: 'Sock fluff', image:  'http://66.media.tumblr.com/d1f01bbe0150fda0c40d2151c5eaeac8/tumblr_odlqqskjj61v9cejwo1_400.jpg'},
+  { name: 'Barnaby', favFood: 'Tuna', image:  'https://68.media.tumblr.com/88d0fcf2b84a7b098dda839130597569/tumblr_okuo4teiql1uhevdso1_1280.jpg'},
+  { name: 'Max', favFood: 'Whiskas Temptations', image:  'http://66.media.tumblr.com/7c5784ea89369c780e782bf10c60315a/tumblr_npb0hlYwhV1u63jaco1_1280.jpg'}
+];
+
 var createCatUl = function(){
   // 1. create the cat <ul> and its class
   let catUl = document.createElement('ul');
@@ -28,9 +35,8 @@ var createImageLi = function(){
 var createImage = function(imageSrc){
   // 5. create the child <img> inside the third <li>
   let catImage = document.createElement('img');
-  catImage.width = '500';
+  catImage.width = '200';
   catImage.src = imageSrc;
-  //catImage.src = 'https://78.media.tumblr.com/2675ae097a77bf9f0136ac09cbcd7712/tumblr_p67ym7RQYX1whb48xo1_500.jpg';
   return catImage;
 };
 
@@ -46,7 +52,7 @@ var appendElements = function(catUl, nameLi, favFoodLi, imageLi, catImage){
 
   // 7. append the image <li> to the <ul>
   catUl.appendChild(imageLi);
-
+  
   let cats = document.querySelector("#cats");
   cats.appendChild(catUl);
 };
@@ -60,6 +66,12 @@ var addCat = function(catName, favFood, catImage){
   appendElements(catUl, nameLi, favFoodLi, imageLi, catImage);
 };
 
-window.onload = function(){
-  addCat('Lebowski', 'Dreamies', 'https://78.media.tumblr.com/2675ae097a77bf9f0136ac09cbcd7712/tumblr_p67ym7RQYX1whb48xo1_500.jpg');
+var app = function(){
+  for (let cat of CATS_ARRAY) {
+    addCat(cat.name, cat.favFood, cat.image);
+  }
 };
+
+// debugger;
+
+window.onload = app;
